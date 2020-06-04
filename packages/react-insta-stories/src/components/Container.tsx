@@ -3,7 +3,6 @@ import GlobalContext from './../context/Global'
 import ProgressContext from './../context/Progress'
 import Story from './Story'
 import ProgressArray from './ProgressArray'
-import DeleteStory from './DeleteStory'
 import { GlobalCtx } from './../interfaces'
 
 export default function () {
@@ -16,7 +15,7 @@ export default function () {
     let mousedownId = useRef<NodeJS.Timeout>()
     let animationFrameId = useRef<number>()
 
-    const { width, height, defaultInterval, stories, loop, currentIndex, isPaused, onStoryStart, onStoryEnd, onAllStoriesEnd, isAdmin, onPressDeleteStory } = useContext<GlobalCtx>(GlobalContext)
+    const { width, height, defaultInterval, stories, loop, currentIndex, isPaused, onStoryStart, onStoryEnd, onAllStoriesEnd } = useContext<GlobalCtx>(GlobalContext)
 
     useEffect(() => {
         if (!pause) {
@@ -152,16 +151,10 @@ export default function () {
                 action={toggleState}
                 bufferAction={bufferAction}
                 playState={pause}
+                currentId={currentId}
                 story={stories[currentId]}
                 getVideoDuration={getVideoDuration}
             />
-            {isAdmin && onPressDeleteStory && (
-                <DeleteStory 
-                    isAdmin={isAdmin}
-                    onPressDeleteStory={onPressDeleteStory}
-                    currentId={currentId}
-                />
-            )}
             <div style={styles.overlay}>
                 <div style={{ width: '50%', zIndex: 999 }} onTouchStart={debouncePause} onTouchEnd={e => mouseUp(e, 'previous')} onMouseDown={debouncePause} onMouseUp={(e) => mouseUp(e, 'previous')} />
                 <div style={{ width: '50%', zIndex: 999 }} onTouchStart={debouncePause} onTouchEnd={e => mouseUp(e, 'next')} onMouseDown={debouncePause} onMouseUp={(e) => mouseUp(e, 'next')} />
