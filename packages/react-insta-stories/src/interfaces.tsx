@@ -11,7 +11,9 @@ export interface ReactInstaStoriesProps {
     currentIndex?: number,
     onAllStoriesEnd?: Function,
     onStoryStart?: Function,
-    onStoryEnd?: Function
+    onStoryEnd?: Function,
+    onPressDeleteStory?: Function,
+    isAdmin?: boolean;
 }
 
 export interface GlobalCtx extends ReactInstaStoriesProps { }
@@ -21,6 +23,12 @@ export interface ContainerState {
     pause: boolean,
     count: number,
     storiesDone: number
+}
+
+export interface DeleteStoryProps {
+    currentId: number,
+    onPressDeleteStory: Function,
+    isAdmin: boolean;
 }
 
 export interface StoryProps {
