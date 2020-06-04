@@ -122,9 +122,11 @@ const stories = [
 | **New props**     | ⭐️             | ⭐️                       | ⭐️                                                                                                                                                                 |
 | `isPaused`        | Boolean         | false                     | Toggle story playing state                                                                                                                                          |
 | `currentIndex`    | Number          | undefined                 | Set the current story index                                                                                                                                         |
+| `isAdmin`    | Boolean          | undefined                 | Enable the delete button to call onPressDeleteStory when clicked index                                                                                                                                         |
 | `onStoryStart`    | Function        | -                         | Callback when a story starts                                                                                                                                        |
 | `onStoryEnd`      | Function        | -                         | Callback when a story ends                                                                                                                                          |
 | `onAllStoriesEnd` | Function        | -                         | Callback when all stories in the array have ended                                                                                                                   |
+| `onPressDeleteStory` | Function        | -                         | Callback when the user click to delete story ended                                                                                                                   |
 
 ### Story object
 
