@@ -4,12 +4,13 @@ import Header from "./Header";
 import SeeMore from "./SeeMore";
 import globalStyle from './../styles.css'
 import GlobalContext from "./../context/Global";
+import DeleteStory from './DeleteStory'
 
 const Story = (props: StoryProps) => {
 	const [loaded, setLoaded] = useState<boolean>(false);
 	const [showMore, setShowMore] = useState<boolean>(false);
 
-	const { width, height, loader, header, storyStyles } = useContext<GlobalCtx>(
+	const { width, height, loader, header, storyStyles, isAdmin, onPressDeleteStory } = useContext<GlobalCtx>(
 		GlobalContext
 	);
 
@@ -145,6 +146,13 @@ const Story = (props: StoryProps) => {
 					{loader || <div className={globalStyle.spinner} />}
 				</div>
 			)}
+			{isAdmin && onPressDeleteStory && !showMore ? (
+				<DeleteStory
+					isAdmin={isAdmin}
+					onPressDeleteStory={onPressDeleteStory}
+					currentId={props.currentId}
+				/>
+			) : null}
 			{typeof props.story === "object" && props.story.seeMore && (
 				<div
 					style={{
