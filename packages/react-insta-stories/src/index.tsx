@@ -31,7 +31,9 @@ const ReactInstaStories = function (props: ReactInstaStoriesProps) {
         currentIndex: props.currentIndex,
         onStoryStart: props.onStoryStart,
         onStoryEnd: props.onStoryEnd,
-        onAllStoriesEnd: props.onAllStoriesEnd
+        onAllStoriesEnd: props.onAllStoriesEnd,
+        onPressDeleteStory: props.onPressDeleteStory,
+        isAdmin: props.isAdmin
     }
     return <GlobalContext.Provider value={context}>
         <Container />
